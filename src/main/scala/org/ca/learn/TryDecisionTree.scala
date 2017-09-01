@@ -22,6 +22,6 @@ object TryDecisionTree {
     val decisionTreeModel = model.predict(v)
     print("Decision:")
     println(decisionTreeModel)
-
+    println(model.toDebugString)
   }
 }
