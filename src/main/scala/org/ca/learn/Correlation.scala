@@ -7,7 +7,7 @@ object Correlation {
   def main(args: Array[String]) {
     val spark = SparkSession
       .builder
-      .appName("Word2Vec example")
+      .appName("Correlation example")
       .getOrCreate()
     val houses = spark.createDataFrame(Seq(
       (1620000d, 2100),
