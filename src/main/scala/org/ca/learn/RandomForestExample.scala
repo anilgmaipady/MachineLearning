@@ -12,7 +12,7 @@ object RandomForestExample {
       .builder
       .appName("LinearRegression")
       .getOrCreate()
-    val data = spark.read.format("libsvm").load("./src/main/scala/resource/diabetes.libsvm")
+    val data = spark.read.format("libsvm").load("./src/main/resources/diabetes.libsvm")
     val Array(training, test) = data.randomSplit(Array(0.7, 0.3))
     val rf = new RandomForestClassifier().setNumTrees(3)
     val model = rf.fit(training)

@@ -12,7 +12,7 @@ object TryDecisionTree {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("Simple Application").setMaster("local[*]")
     val sc = new SparkContext(conf)
-    val data = sc.textFile("./src/main/scala/resource/tennis.csv")
+    val data = sc.textFile("./src/main/resources/tennis.csv")
     val parsedData = data.map {
       line =>  val parts = line.split(',').map(_.toDouble)
         LabeledPoint(parts(0), Vectors.dense(parts.tail))

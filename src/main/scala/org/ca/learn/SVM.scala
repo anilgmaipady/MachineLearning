@@ -9,7 +9,7 @@ object SVM {
     val conf = new SparkConf().setAppName("Simple Application").setMaster("local[*]")
     val sc = new SparkContext(conf)
     //val data = MLUtils.loadLibSVMFile(sc,"s3a://sparkcookbook/medicaldata/diabetes.libsvm")
-    val data = MLUtils.loadLibSVMFile(sc,"./src/main/scala/resource/diabetes.libsvm")
+    val data = MLUtils.loadLibSVMFile(sc,"./src/main/resources/diabetes.libsvm")
     println(data.count)
     val trainingAndTest = data.randomSplit(Array(0.5,0.5))
     val trainingData = trainingAndTest(0)

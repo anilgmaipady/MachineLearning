@@ -15,7 +15,7 @@ object CollaborativeFilter {
       .getOrCreate()
     val encoder = Encoders.product[Rating]
     //https://sparkcookbook.s3.amazonaws.com/moviedata/ratings.csv
-    val ratings = spark.read.option("header", "true").option("inferschema", "true").csv("./src/main/scala/resource/ratings-do-not-commit.csv").as[Rating](encoder).cache()
+    val ratings = spark.read.option("header", "true").option("inferschema", "true").csv("./src/main/resources/ratings-do-not-commit.csv").as[Rating](encoder).cache()
     val Array(training, test) = ratings.randomSplit(Array(0.7, 0.3))
     val als = new ALS().setMaxIter(30).setRegParam(.065).setUserCol("userId").setItemCol("movieId").setRatingCol("rating")
     val model = als.fit(training)
