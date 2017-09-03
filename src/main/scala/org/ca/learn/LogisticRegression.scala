@@ -51,12 +51,20 @@ object LogisticRegression {
 
     val binarySummary = trainingSummary.asInstanceOf[BinaryLogisticRegressionSummary]
 
+
+    /*
+    ROC is a statistical tool to assess the accuracy of predictions. The accuracy of predictions plays a major role in how predictions would be used.
+    Quoting Prof. Andrew Ng, Stanford University, chief scientist at Baidu, here for reference:
+    "The difference between 95% accuracy versus 99% accuracy is between you sometimes making use of it versus using it all the time ."
+    ROC
+    */
+
     println(s"areaUnderROC: ${binarySummary.areaUnderROC}")
 
     val test = spark.createDataFrame(Seq(Vectors.dense(1.045)).map(Tuple1.apply)).toDF("features")
     val predictions = model.transform(test)
-    predictions.columns.foreach(println)
-    predictions.collect().foreach(println)
+
+    predictions.show()
 
   }
 }
