@@ -24,7 +24,7 @@ object LinearRegressionHouseSizeVSHousePrice {
     )).toDF("label","features")
     val lr = new LinearRegression()
     val model = lr.fit(points)
-    val test = spark.createDataFrame(Seq(Vectors.dense(2100)).map(Tuple1.apply)).toDF("features")
+    val test = spark.createDataFrame(Seq(Vectors.dense(600)).map(Tuple1.apply)).toDF("features")
     val predictions = model.transform(test)
     predictions.show()
   }

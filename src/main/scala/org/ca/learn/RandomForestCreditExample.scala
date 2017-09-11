@@ -11,6 +11,7 @@ object RandomForestCreditExample {
       .builder
       .appName("RandomForestExample")
       .getOrCreate()
+    //Label Generosity:Responsibility:Care:Organization:Spendthrift:Volatile
     val data = spark.read.format("libsvm").load("./src/main/resources/rf-credit.libsvm")
     val Array(training, test) = data.randomSplit(Array(0.7, 0.3))
     val rf = new RandomForestClassifier().setNumTrees(3)

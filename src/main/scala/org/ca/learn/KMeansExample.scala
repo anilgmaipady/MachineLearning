@@ -8,6 +8,7 @@ import org.apache.spark.sql.SparkSession
 object KMeansExample {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder.appName("KMeansExample").getOrCreate()
+    //Size of the lot and the price of the house in 1000 (k)
     val data = spark.createDataFrame(Seq(
       Vectors.dense(12839,2405),
       Vectors.dense(10000,2200),

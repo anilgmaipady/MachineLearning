@@ -10,6 +10,17 @@ object GradientBoostedTreesExample {
       .builder
       .appName("RandomForestExample")
       .getOrCreate()
+    /*
+    Class variable (0 or 1)
+    Number of times pregnant
+    Plasma glucose concentration at 2 hours in an oral glucose tolerance test
+    Diastolic blood pressure (mmHg)
+    Triceps skinfold thickness (mm)
+    2-hour serum insulin (mu U/ml)
+    Body mass index (weight in kg/(height in m2 )
+    Diabetes pedigree function
+    Age (years)
+    */
     val data = spark.read.format("libsvm").load("./src/main/resources/diabetes.libsvm")
     val Array(training, test) = data.randomSplit(Array(0.7, 0.3))
     val gbt = new GBTClassifier().setMaxIter(10)
